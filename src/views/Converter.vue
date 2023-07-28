@@ -22,14 +22,21 @@ const getValue = () => {
   const unit = Value / Nominal;
   return (switchCurrency.value ? unit * inputValue.value : inputValue.value / unit).toFixed(4);
 };
+
+const setCurrency = (item) => {
+  currency.value = item;
+  toggleSelect.value = false;
+};
 </script>
 
 <template>
   <h1>Converter</h1>
   <div class="converter">
-    <div class="input-group">
-      <span class="input-group-text">{{ sym(switchCurrency && currency ? currency.CharCode : "RUB") }}</span>
-      <input type="number" v-model="inputValue" class="form-control" />
+    <div>
+      <div class="input-group">
+        <span class="input-group-text">{{ sym(switchCurrency && currency ? currency.CharCode : "RUB") }}</span>
+        <input type="number" v-model="inputValue" class="form-control" />
+      </div>
     </div>
 
     <div class="converter__button">
@@ -50,29 +57,34 @@ const getValue = () => {
       </button>
     </div>
 
-    <div class="input-group">
-      <input :value="currencyFormat.format(getValue())" type="text" class="form-control" disabled />
-      <button
-        @click="toggleSelect = !toggleSelect"
-        class="btn btn-outline-secondary dropdown-toggle"
-        :class="{ show: toggleSelect }"
-      >
-        {{ currency ? sym(switchCurrency ? "RUB" : currency.CharCode) : "Dropdown" }}
-      </button>
-      <ul class="dropdown-menu dropdown-menu-end" :class="{ show: toggleSelect, pos: toggleSelect }">
-        <li @click="currency = item" v-for="(item, i) in catalog" :key="i" class="dropdown-item">
-          {{ item.CharCode }}
-        </li>
-      </ul>
+    <div>
+      <div class="input-group">
+        <input :value="currencyFormat.format(getValue())" type="text" class="form-control" disabled />
+        <button
+          @click="toggleSelect = !toggleSelect"
+          class="btn btn-outline-secondary dropdown-toggle"
+          :class="{ show: toggleSelect }"
+        >
+          {{ currency ? sym(switchCurrency ? "RUB" : currency.CharCode) : "?" }}
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" :class="{ show: toggleSelect, pos: toggleSelect }">
+          <li @click="setCurrency(item)" v-for="(item, i) in catalog" :key="i" class="dropdown-item">
+            {{ item.CharCode }}
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
 
 <style>
 .converter {
-  display: grid;
+  display: flex;
   align-items: center;
-  grid-template-columns: 200px 100px 300px;
+  justify-content: center;
+  max-width: 700px;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .converter__button {
