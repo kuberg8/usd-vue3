@@ -11,8 +11,8 @@
     "core-js": "^3.6.5",
     "gh-pages": "^5.0.0",
     "vue": "^3.0.0",
-    "vue-router": "^4.0.13",
-    "vuex": "^4.0.2"
+    "vue-router": "^4.2.4",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.12",
