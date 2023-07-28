@@ -13,7 +13,10 @@ let inputValue = ref("");
 
 let trimList = computed(() => {
   const value = inputValue.value.toLocaleLowerCase();
-  return props.list.filter(({ CharCode }) => !inputValue.value || CharCode.toLowerCase().includes(value));
+  return props.list.filter(
+    ({ CharCode, Name }) =>
+      !inputValue.value || CharCode.toLowerCase().includes(value) || Name.toLocaleLowerCase().includes(value)
+  );
 });
 
 let switchCurrency = ref(false);
