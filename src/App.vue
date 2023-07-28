@@ -1,26 +1,33 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-</template>
+<script setup>
+import { useStore } from "vuex";
+import { onMounted } from "vue";
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+const store = useStore();
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+onMounted(async () => {
+  const { Valute } = await fetch("https://www.cbr-xml-daily.ru/daily_json.js").then((res) => res.json());
+  store.commit("SET_CATALOG", Object.values(Valute));
+});
 </script>
 
+<template>
+  <ul class="nav">
+    <li class="nav-item">
+      <router-link class="nav-link" to="/">Catalog</router-link>
+    </li>
+    <li class="nav-item">
+      <router-link class="nav-link" to="/converter">Converter</router-link>
+    </li>
+  </ul>
+  <router-view />
+</template>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+body {
+  margin: 20px;
+}
+
+.router-link-active {
+  color: grey;
 }
 </style>
