@@ -13,7 +13,7 @@ onMounted(async () => {
 <template>
   <ul class="nav">
     <li class="nav-item">
-      <router-link class="nav-link" to="/">Catalog</router-link>
+      <router-link class="nav-link" to="/catalog">Catalog</router-link>
     </li>
     <li class="nav-item">
       <router-link class="nav-link" to="/converter">Converter</router-link>
