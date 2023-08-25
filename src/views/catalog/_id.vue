@@ -6,7 +6,7 @@ import { useRoute } from 'vue-router'
 const store = useStore()
 const route = useRoute()
 
-let info = computed(() => store.getters['GET_BY_ID'](route.params.id))
+const info = computed(() => store.getters['GET_BY_ID'](route.params.id))
 </script>
 
 <template>

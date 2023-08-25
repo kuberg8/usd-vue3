@@ -13,9 +13,9 @@ const props = defineProps({
   },
 })
 
-let inputValue = ref('')
+const inputValue = ref('')
 
-let trimList = computed(() => {
+const trimList = computed(() => {
   const value = inputValue.value.toLocaleLowerCase()
   return props.list.filter(
     ({ CharCode, Name }) =>
@@ -23,7 +23,7 @@ let trimList = computed(() => {
   )
 })
 
-let switchCurrency = ref(false)
+const switchCurrency = ref(false)
 </script>
 
 <template>

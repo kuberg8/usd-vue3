@@ -8,8 +8,8 @@ const LIST_KEY = 'favorites'
 const store = useStore()
 const db = IndexDB
 
-let favorites = ref([])
-let catalog = computed(function () {
+const favorites = ref([])
+const catalog = computed(function () {
   return store.state.catalog.filter(({ ID }) => !favorites.value.some((item) => item.ID == ID))
 })
 

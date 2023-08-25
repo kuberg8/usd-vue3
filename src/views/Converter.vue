@@ -3,14 +3,14 @@ import { ref, computed } from "vue";
 import { useStore } from "vuex";
 import { sym, currencyFormat } from "@/utils/utils";
 
-let toggleSelect = ref(false);
-let currency = ref(null);
-let switchCurrency = ref(false);
-let inputValue = ref("");
+const toggleSelect = ref(false);
+const currency = ref(null);
+const switchCurrency = ref(false);
+const inputValue = ref("");
 
 const store = useStore();
 
-let catalog = computed(function () {
+const catalog = computed(function () {
   return store.state.catalog;
 });
 
