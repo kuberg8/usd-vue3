@@ -1,5 +1,3 @@
 module.exports = {
-    publicPath: process.env.NODE_ENV === 'production'
-      ? '/usd-vue3/'
-      : '/'
-  }
+  // publicPath: process.env.NODE_ENV === 'production' ? '/usd-vue3/' : '/',
+}
