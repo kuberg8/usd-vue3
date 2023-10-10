@@ -25,7 +25,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory('/usd-vue3/'), // or createWebHistory(process.env.BASE_URL)
+  history: createWebHistory(),// createWebHistory('/usd-vue3/') or createWebHistory(process.env.BASE_URL)
   routes,
 })
 
